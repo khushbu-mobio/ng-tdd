@@ -1,7 +1,6 @@
 {
     "cucumberautocomplete.steps": [
-        "test/features/step_definitions/*.js",
-        "node_modules/qa-lib/src/step_definitions/*.js"
+        "/var/khushbu/Learning/unittesting/e2e/src/steps/*.ts"
     ],
     "cucumberautocomplete.syncfeatures": "test/features/*feature",
     "cucumberautocomplete.strictGherkinCompletion": true
