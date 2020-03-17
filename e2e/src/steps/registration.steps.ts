@@ -31,6 +31,9 @@ When(/^After Entering valid First Name, Last Name & Email, click on 'Registratio
     await page.getHTMLElementByName('registration').click();
 });
 
+
+
+
 Then(/^Redirect to home page$/, async () => {
     // await page.navigateTo();
     expect(await page.getCurrentUrl()).to.contain(browser.baseUrl,"/home");
