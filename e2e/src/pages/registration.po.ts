@@ -1,12 +1,27 @@
-import { browser, by, element, promise } from 'protractor';
+import { browser, by, element, promise, ElementFinder } from 'protractor';
 
 export class RegistrationPage {
-    navigateTo() {
-        return browser.get(browser.baseUrl) as Promise<any>;
-      }
-    
-    getInput(text:string){
-    //     return element(by.css('input["kshah"]')).sendKeys(text);
-     return element(by.id('fname')).sendKeys(text);
-    }
+  
+  /**
+   * navigate to baseurl
+   */
+  navigateTo() {
+    return browser.get(browser.baseUrl) as Promise<any>;
+  }
+
+  /**
+   * Get current url you on
+   */
+  getCurrentUrl() {
+    return browser.getCurrentUrl() as Promise<any>;
+  }
+
+  /**
+   * 
+   * Get HTML element by `name`
+   */
+  getHTMLElementByName(name): ElementFinder {
+    return element(by.name(name));
+  }
+
 }

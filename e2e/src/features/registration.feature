@@ -2,11 +2,9 @@ Feature: Go to the Registration Page
 
    Display Form
 
-   Scenario: Registration Page
-    Given I am on the registration page
-    # When I add "kshah" in the firstname field
-    When I enter "firstname" with "kshah"
-    # And I fill "lastname" field with "shah"
-    # And I fill "email" field with "kshah@gmail.com"
-    # And I click on the button "registration"
-    Then I should be redirected on "home"
+Scenario: User Should be able to registration with valid input
+  Given I am on the home page
+  When I click on register button
+  And Open Browser with Registration page 
+  And After Entering valid First Name, Last Name & Email, click on 'Registration' button
+  Then Redirect to home page
