@@ -1,7 +1,7 @@
 import { browser, by, element, promise, ElementFinder } from 'protractor';
 
 export class RegistrationPage {
-  
+
   /**
    * navigate to baseurl
    */

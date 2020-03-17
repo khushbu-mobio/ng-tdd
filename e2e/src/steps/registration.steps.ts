@@ -21,7 +21,7 @@ When(/^I click on register button$/, function (callback) {
 
 When(/^Open Browser with Registration page$/, async () => {
     // expect(await page.getCurrentUrl()).to.contain('http://localhost:4200/registration');
-    expect(await page.getCurrentUrl()).to.contain(browser.baseUrl,"/registration");
+    expect(await page.getCurrentUrl()).to.contain(browser.baseUrl, "/registration");
 })
 
 When(/^After Entering valid First Name, Last Name & Email, click on 'Registration' button$/, async () => {
@@ -31,12 +31,9 @@ When(/^After Entering valid First Name, Last Name & Email, click on 'Registratio
     await page.getHTMLElementByName('registration').click();
 });
 
-
-
-
 Then(/^Redirect to home page$/, async () => {
     // await page.navigateTo();
-    expect(await page.getCurrentUrl()).to.contain(browser.baseUrl,"/home");
+    expect(await page.getCurrentUrl()).to.contain(browser.baseUrl, "/home");
 });
 
 
