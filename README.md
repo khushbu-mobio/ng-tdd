@@ -26,13 +26,13 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-
+## 
 # How to Set Up Angular E2E Testing with Cucumber
 
-# 1. Install the needed dependencies
+## 1. Install the needed dependencies
 npm install --save-dev @types/{chai,cucumber} chai cucumber protractor-cucumber-framework
 
-# 2. Setup Cucumber and Chai's type definition files
+## 2. Setup Cucumber and Chai's type definition files
 Open the e2e/tsconfig.json file.
 
 Replace:
@@ -43,7 +43,7 @@ By:
 
     "types": ["chai", "cucumber", "node"]
 
-# 3. Update the Protractor configuration to use Cucumber
+## 3. Update the Protractor configuration to use Cucumber
 
 Open Protractor's configuration file located at e2e/protractor.conf.js and do the following modifications:
 
@@ -82,7 +82,7 @@ Remove any Jasmine specific code from e2e/protractor.conf.js
         jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
     }
 
-# 4. Write the actual tests in below defined files
+## 4. Write the actual tests in below defined files
 
 The feature file - e2e/src/features/registration.feature 
 
@@ -91,7 +91,7 @@ The page object - e2e/src/pages/app.po.ts
 The step definition - e2e/src/steps/registration.steps.ts
 
 
-# 5. Launch the tests
+## 5. Launch the tests
 
 To launch the tests, simply run the following command:
 
