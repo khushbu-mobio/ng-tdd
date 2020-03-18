@@ -1,4 +1,3 @@
-
 import { Before, Given, When, Then, setDefaultTimeout } from 'cucumber';
 import { expect } from 'chai';
 import { RegistrationPage } from '../pages/registration.po';
@@ -20,7 +19,6 @@ When(/^I click on register button$/, function (callback) {
 });
 
 When(/^Open Browser with Registration page$/, async () => {
-    // expect(await page.getCurrentUrl()).to.contain('http://localhost:4200/registration');
     expect(await page.getCurrentUrl()).to.contain(browser.baseUrl, "/registration");
 })
 
@@ -32,7 +30,6 @@ When(/^After Entering valid First Name, Last Name & Email, click on 'Registratio
 });
 
 Then(/^Redirect to home page$/, async () => {
-    // await page.navigateTo();
     expect(await page.getCurrentUrl()).to.contain(browser.baseUrl, "/home");
 });
 

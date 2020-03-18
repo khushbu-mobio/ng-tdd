@@ -17,7 +17,6 @@ export class RegistrationPage {
   }
 
   /**
-   * 
    * Get HTML element by `name`
    */
   getHTMLElementByName(name): ElementFinder {
