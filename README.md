@@ -82,10 +82,11 @@ Remove any Jasmine specific code from e2e/protractor.conf.js
         jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
     }
 
-  # 4. Write the actual tests
+# 4. Write the actual tests in below defined files
 
-  
+The feature file - e2e/src/features/registration.feature 
 The page object - e2e/src/pages/app.po.ts
+The step definition - e2e/src/steps/registration.steps.ts
 
 
 # 5. Launch the tests
