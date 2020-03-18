@@ -37,11 +37,11 @@ Open the e2e/tsconfig.json file.
 
 Replace:
 
-"types": ["jasmine", "jasminewd2", "node"]
+    "types": ["jasmine", "jasminewd2", "node"]
 
 By:
 
-"types": ["chai", "cucumber", "node"]
+    "types": ["chai", "cucumber", "node"]
 
 # 3. Update the Protractor configuration to use Cucumber
 
@@ -53,12 +53,12 @@ Update the test files to be used by Protractor:
 
 Our feature files will reside in the e2e/src/features folder.
 
-2. Tell Protractor that you want to use Cucumber as the testing framework.
+Tell Protractor that you want to use Cucumber as the testing framework.
 
     framework: 'custom',
     frameworkPath: require.resolve('protractor-cucumber-framework')
 
-3. Configure Cucumber Options
+Configure Cucumber Options
 
     cucumberOpts: {
         require: ['./src/steps/**/*.steps.ts'],
@@ -66,7 +66,7 @@ Our feature files will reside in the e2e/src/features folder.
 
 cucumberOpts defines the actual command line options that are passed to Cucumber.js. Here we are telling Cucumber that our step definitions files reside in the e2e/src/steps folder.
 
-4. Remove any Jasmine specific code from e2e/protractor.conf.js
+Remove any Jasmine specific code from e2e/protractor.conf.js
 
     const { SpecReporter } = require('jasmine-spec-reporter');
     ....
