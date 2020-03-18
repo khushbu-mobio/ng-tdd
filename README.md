@@ -95,4 +95,4 @@ The step definition - e2e/src/steps/registration.steps.ts
 
 To launch the tests, simply run the following command:
 
-ng e2e
+    ng e2e
