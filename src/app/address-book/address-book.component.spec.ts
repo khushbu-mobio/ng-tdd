@@ -82,7 +82,7 @@ describe('AddressBookComponent', () => {
     const counter = de.query(By.directive(ContactListComponent));
     const cmp = counter.componentInstance;
     cmp.delete.emit(testContact.id);
-    expect(component.deleteContact).toHaveBeenCalled();
+    expect(component.deleteContact).toHaveBeenCalledWith(testContact.id);
   });
   it('should  call edit method', () => {
    

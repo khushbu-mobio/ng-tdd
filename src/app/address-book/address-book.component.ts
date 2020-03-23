@@ -18,7 +18,7 @@ export class AddressBookComponent implements OnInit {
   /**
    * call the addressService and save the contact
    */
-  saveContact(event = null) {
+  saveContact(event) {
     if(event.mode === "new") {
       this.addressService.addContact(event.contact);
     } else if (event.mode === "edit") {
