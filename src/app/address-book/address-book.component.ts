@@ -32,6 +32,7 @@ export class AddressBookComponent implements OnInit {
    */
   editContact(id) {
     this.contact = new Contact(this.addressService.getContactById(id));
+    console.log("Call edit")
   }
 
   /**
@@ -39,7 +40,7 @@ export class AddressBookComponent implements OnInit {
    */
   deleteContact(id) {
     console.log("Call del")
-    this.addressService.deleteContactById(id);
+   this.addressService.deleteContactById(id);
 
   }
 
@@ -48,5 +49,6 @@ export class AddressBookComponent implements OnInit {
    */
   get contacts() {
     return this.addressService.getContacts();
+    
   }
 }

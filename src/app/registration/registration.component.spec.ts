@@ -12,7 +12,7 @@ const data = {
   lastName: 'shah',
   email: 'k@gmail.com'
 }
-describe('RegistrationComponent', () => {
+xdescribe('RegistrationComponent', () => {
   let component: RegistrationComponent;
   let fixture: ComponentFixture<RegistrationComponent>;
   let de: DebugElement;

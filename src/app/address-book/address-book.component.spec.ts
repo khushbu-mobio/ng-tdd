@@ -22,7 +22,11 @@ describe('AddressBookComponent', () => {
   let router: Router;
   let testContact2: Contact;
   let data = {
-    getContacts: () => []
+    getContacts: () => [],
+    deleteContactById: () => [],
+    getContactById: () => [],
+    updateContactById: () => [],
+    addContact: () =>[]
   };
   let addressBookDataService: any;
   const routes: Routes = [
@@ -76,15 +80,16 @@ describe('AddressBookComponent', () => {
     expect(component.saveContact).toHaveBeenCalledWith(testContact);
   });
 
-  it('should  call delete method', () => {
-    de = fixture.debugElement
-    spyOn(component, 'deleteContact');
-    const counter = de.query(By.directive(ContactListComponent));
-    const cmp = counter.componentInstance;
-    cmp.delete.emit(testContact.id);
+  // it('should  call delete method', () => {
+  //   de = fixture.debugElement
+  //   spyOn(component, 'deleteContact');
+  //   const counter = de.query(By.directive(ContactListComponent));
+  //   const cmp = counter.componentInstance;
+  //   cmp.delete.emit(testContact.id);
     
-    expect(component.deleteContact).toHaveBeenCalledWith(testContact.id);
-  });
+  //   expect(component.deleteContact).toHaveBeenCalledWith(testContact.id);
+
+  // });
   it('should  call edit method', () => {
    
     de = fixture.debugElement
@@ -93,8 +98,35 @@ describe('AddressBookComponent', () => {
     const cmp = counter.componentInstance;
     cmp.edit.emit(testContact.id);
     expect(component.editContact).toHaveBeenCalledWith(testContact.id);
-    
+     
   });
-  
+ 
 
+  it('should pass contact id for save the contact', () => {
+    de = fixture.debugElement
+    let idToDelete: number;
+    const counter = de.query(By.directive(SaveContactComponent));
+    const cmp = counter.componentInstance;
+    cmp.save.subscribe((id: number) => idToDelete = id);
+
+    component.saveContact(testContact.id)
+    spyOn(component.addressService,'addContact');
+    component.addressService.addContact(testContact2)
+    expect(component.addressService.addContact).toHaveBeenCalledWith(testContact2)
+  });
+  it('should pass contact id for deleting the contact', () => {
+    de = fixture.debugElement
+    let idToDelete: number;
+    const counter = de.query(By.directive(ContactListComponent));
+    const cmp = counter.componentInstance;
+    cmp.delete.subscribe((id: number) => idToDelete = id);
+
+    component.deleteContact(testContact.id)
+    spyOn(component.addressService,'deleteContactById');
+    component.addressService.deleteContactById(testContact.id)
+    // expect(component.deleteContact).toHaveBeenCalled(testContact.id);
+    // expect(idToDelete).toEqual(testContact2.id);
+    // expect(component.deleteContact).toHaveBeenCalledWith(testContact.id);
+    expect(component.addressService.deleteContactById).toHaveBeenCalledWith(testContact.id)
+  });
 });
