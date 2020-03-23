@@ -2,21 +2,20 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Contact } from '../models/contact';
 
 @Component({
-  selector: 'contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  selector: 'contact-list',
+  templateUrl: './contact-list.component.html',
+  styleUrls: ['./contact-list.component.css']
 })
-export class ContactComponent implements OnInit {
+export class ContactListComponent implements OnInit {
   @Input()
-  contact: Contact;
+  contacts: Contact[];
 
   /**
    * can fire to send data to its parent for edit contact.
    */
   @Output()
   edit:EventEmitter<number> = new EventEmitter();
-
-
+  
   /**
    * can fire to send data to its parent for delete contact.
    */
@@ -28,12 +27,12 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
   }
 
-  editContact() {
-    this.edit.emit(this.contact.id);
+  editContact(id) {
+    this.edit.emit(id);
   }
 
-  deleteContact() {
-    this.delete.emit(this.contact.id);
+  deleteContact(id) {
+    this.delete.emit(id);
   }
 
 }

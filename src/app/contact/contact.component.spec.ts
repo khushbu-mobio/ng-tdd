@@ -1,62 +1,75 @@
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { BrowserModule, By } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DebugElement } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContactComponent } from './contact.component';
+import { Contact } from '../models/contact';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('ContactComponent', () => {
-  let comp: ContactComponent;
+  let component: ContactComponent;
   let fixture: ComponentFixture<ContactComponent>;
-  let de: DebugElement;
-  let el: HTMLElement;
+  let testContact: Contact;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        ContactComponent
-      ],
-      imports: [
-        BrowserModule,
-        FormsModule,
-        ReactiveFormsModule
-      ]
-    }).compileComponents().then(() => {
-      fixture = TestBed.createComponent(ContactComponent);
-      comp = fixture.componentInstance; // ContactComponent test instance
-      // query for the title <h1> by CSS element selector
-      de = fixture.debugElement.query(By.css('form'));
-      el = de.nativeElement;
+      declarations: [ ContactComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ContactComponent);
+    component = fixture.componentInstance;
+
+    testContact = new Contact({
+      id: 123,
+      firstName: 'Richa',
+      lastName: 'Gupta',
+      phone: '+91 9817852819',
+      country: 'India'
     });
-  }));
+    testContact.save();
+    component.contact = testContact;
+    fixture.detectChanges();
+  });
 
-  it(`should have as text 'contact page'`, async(() => {
-    expect(comp.text).toEqual('contact page');
-  }));
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
-  it(`should set submitted to true`, async(() => {
-    comp.onSubmit();
-    expect(comp.submitted).toBeTruthy();
-  }));
-  // it(`should call the onSubmit method`, async(() => {
-  //   spyOn(comp, 'onSubmit');
-  //   el = fixture.debugElement.query(By.css('button')).nativeElement;
-  //   el.click();
-  //   expect(comp.onSubmit).toHaveBeenCalled();
-  // }));
+  it('should show full name in contact card header', () => {
+    const de:DebugElement = fixture.debugElement.query(By.css('.content>.header'));
+    const el = de.nativeElement;
+    expect(el.textContent).toContain(testContact.fullName);
+  });
 
- it(`form should be invalid`, async(() => {
-    comp.contactForm.controls['email'].setValue('');
-    comp.contactForm.controls['name'].setValue('');
-    comp.contactForm.controls['text'].setValue('');
-    expect(comp.contactForm.valid).toBeFalsy();
-  }));
+  it('should show phone in contact card', () => {
+    const de:DebugElement = fixture.debugElement.query(By.css('.description>.call'));
+    const el = de.nativeElement;
+    expect(el.textContent).toContain(testContact.phone);
+  });
 
-  it(`form should be valid`, async(() => {
-    comp.contactForm.controls['email'].setValue('asd@asd.com');
-    comp.contactForm.controls['name'].setValue('aada');
-    comp.contactForm.controls['text'].setValue('text');
-    expect(comp.contactForm.valid).toBeTruthy();
-  }));
+  it('should show country name in contact card', () => {
+    const de:DebugElement = fixture.debugElement.query(By.css('.description>.marker'));
+    const el = de.nativeElement;
+    expect(el.textContent).toContain(testContact.country);
+  });
 
+  it('should pass contact id for editing the contact', () => {
+    let idToEdit: number;
+    const de:DebugElement = fixture.debugElement.query(By.css('.extra.content>.buttons>.green.button'));
+    const el = de.nativeElement;
+    component.edit.subscribe((id: number) => idToEdit = id);
+    el.click();
+    expect(idToEdit).toEqual(testContact.id);
+  });
+
+  it('should pass contact id for deleting the contact', () => {
+    let idToDelete: number;
+    const de:DebugElement = fixture.debugElement.query(By.css('.extra.content>.buttons>.red.button'));
+    const el = de.nativeElement;
+    component.delete.subscribe((id: number) => idToDelete = id);
+    el.click();
+    expect(idToDelete).toEqual(testContact.id);
+  });
 });

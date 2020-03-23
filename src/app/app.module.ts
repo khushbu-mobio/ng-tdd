@@ -11,6 +11,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ContactComponent } from './contact/contact.component';
 import { RegistrationService } from './registration/registration.service';
 import { UserService } from './users/user.service';
+import { AddressBookComponent } from './address-book/address-book.component';
+import { ContactListComponent } from './contact-list/contact-list.component';
+import { SaveContactComponent } from './save-contact/save-contact.component';
+import { AddressBookDataService } from './services/address-book-data.service';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,6 +23,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'users', component: UsersComponent },
   { path: 'registration', component: RegistrationComponent },
+  { path: 'address-book', component: AddressBookComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 @NgModule({
@@ -27,7 +33,10 @@ const routes: Routes = [
     AboutComponent,
     UsersComponent,
     RegistrationComponent,
-    ContactComponent
+    ContactComponent,
+    AddressBookComponent,
+    ContactListComponent,
+    SaveContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +44,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [RegistrationService, UserService],
+  providers: [RegistrationService, UserService,AddressBookDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

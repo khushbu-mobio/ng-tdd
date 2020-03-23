@@ -1,0 +1,48 @@
+
+
+<div class="card m-3">
+  <div class="card-body">
+    <form [formGroup]="addressForm" (ngSubmit)="saveContact()">
+      <!-- <div class="form-row"> -->
+        <div class="form-group col-5">
+          <label>First Name</label>
+          <input  name="fname" value="kshah" id="fname" type="text" formControlName="firstName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && formValue.firstName.errors }" [(ngModel)]="contact.firstName" autofocus />
+          <div *ngIf="submitted && formValue.firstName.errors" class="invalid-feedback">
+            <div *ngIf="formValue.firstName.errors.required">First Name is required</div>
+          </div>
+        </div>
+        <div class="form-group col-5">
+          <label>Last Name</label>
+          <input  name="lname" value="shah" id="lname" type="text" formControlName="lastName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && formValue.lastName.errors }" [(ngModel)]="contact.lastName" />
+          <div *ngIf="submitted && formValue.lastName.errors" class="invalid-feedback">
+            <div *ngIf="formValue.lastName.errors.required">Last Name is required</div>
+          </div>
+        </div>
+        <div class="form-group col-5">
+          <label>Phone No.</label>
+          <input  name="phone" value="phone" id="phone" type="text" formControlName="phone" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && formValue.phone.errors }" [(ngModel)]="contact.phone" />
+          <div *ngIf="submitted && formValue.phone.errors" class="invalid-feedback">
+            <div *ngIf="formValue.phone.errors.required">Phone is required</div>
+          </div>
+        </div>
+        <div class="form-group col-5">
+          <label>country</label>
+          <input  name="country" value="country" id="country" type="text" formControlName="country" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && formValue.country.errors }" [(ngModel)]="contact.country" />
+          <div *ngIf="submitted && formValue.country.errors" class="invalid-feedback">
+            <div *ngIf="formValue.country.errors.required">Country is required</div>
+          </div>
+        </div>
+      <div class="">
+        <!-- <button class="btn btn-secondary" type="button" >Save Contact</button> -->
+        <button class=" btn btn-primary " >Save Contact</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
