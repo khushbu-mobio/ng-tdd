@@ -31,9 +31,9 @@ export class AddressBookComponent implements OnInit {
    * call the getContactByid method from addressService and edit contact
    */
   editContact(id) {
-    this.contact = new Contact(this.addressService.getContactById(id));
+   this.contact = new Contact(this.addressService.getContactById(id));
     console.log("Call edit")
-    
+  
   }
 
   /**

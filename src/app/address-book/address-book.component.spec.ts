@@ -104,12 +104,12 @@ describe('AddressBookComponent', () => {
 
   it('should pass contact id for save the contact', () => {
     de = fixture.debugElement
-    let idToDelete: number;
+    let idToSave: number;
 
     const counter = de.query(By.directive(SaveContactComponent));
     const cmp = counter.componentInstance;
     cmp.save.subscribe((id: number) => {
-      idToDelete = id;
+      idToSave = id;
 
     });
 
@@ -137,10 +137,10 @@ describe('AddressBookComponent', () => {
 
   it('should pass contact id for edit the contact', () => {
     de = fixture.debugElement
-    let idToDelete: number;
+    let idToEdit: number;
     const counter = de.query(By.directive(ContactListComponent));
     const cmp = counter.componentInstance;
-    cmp.edit.subscribe((id: number) => idToDelete = id);
+    cmp.edit.subscribe((id: number) => idToEdit = id);
 
     component.editContact(testContact.id)
     spyOn(component.addressService, 'getContactById');
@@ -148,3 +148,4 @@ describe('AddressBookComponent', () => {
     expect(component.addressService.getContactById).toHaveBeenCalledWith(testContact.id)
   });
 });
+
