@@ -24,7 +24,7 @@ export class AddressBookComponent implements OnInit {
     } else if (event.mode === "edit") {
       this.addressService.updateContactById(event.contact.id, event.contact);
     }
-    console.log("called")
+    console.log("called save")
   }
 
   /**
@@ -33,6 +33,7 @@ export class AddressBookComponent implements OnInit {
   editContact(id) {
     this.contact = new Contact(this.addressService.getContactById(id));
     console.log("Call edit")
+    
   }
 
   /**
