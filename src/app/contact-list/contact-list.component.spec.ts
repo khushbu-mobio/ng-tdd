@@ -5,15 +5,16 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Contact } from '../models/contact';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { ContactComponent } from '../contact/contact.component';
 
 describe('ContactListComponent', () => {
   let component: ContactListComponent;
   let fixture: ComponentFixture<ContactListComponent>;
   let testContact2: Contact;
-
+  let de: DebugElement
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContactListComponent ],
+      declarations: [ ContactListComponent,ContactComponent],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
@@ -75,4 +76,5 @@ describe('ContactListComponent', () => {
 
     expect(idToDelete).toEqual(testContact2.id);
   });
+
 });

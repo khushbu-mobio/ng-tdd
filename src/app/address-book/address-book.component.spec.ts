@@ -28,7 +28,13 @@ describe('AddressBookComponent', () => {
   const routes: Routes = [
     { path: 'address-book', component: SaveContactComponent },
   ];
-
+  let  testContact = new Contact({
+    id: 123,
+    firstName: 'Richa',
+    lastName: 'Gupta',
+    phone: '+91 9817852819',
+    country: 'India'
+  });
   beforeEach(async(() => {
    
     TestBed.configureTestingModule({
@@ -66,8 +72,8 @@ describe('AddressBookComponent', () => {
     spyOn(component, 'saveContact');
     const counter = de.query(By.directive(SaveContactComponent));
     const cmp = counter.componentInstance;
-    cmp.save.emit(1);
-    expect(component.saveContact).toHaveBeenCalledWith(1);
+    cmp.save.emit(testContact);
+    expect(component.saveContact).toHaveBeenCalledWith(testContact);
   });
 
   it('should  call delete method', () => {
@@ -75,16 +81,17 @@ describe('AddressBookComponent', () => {
     spyOn(component, 'deleteContact');
     const counter = de.query(By.directive(ContactListComponent));
     const cmp = counter.componentInstance;
-    cmp.delete.emit(0);
-    expect(component.deleteContact).toHaveBeenCalledWith(0);
+    cmp.delete.emit(testContact.id);
+    expect(component.deleteContact).toHaveBeenCalled();
   });
   it('should  call edit method', () => {
+   
     de = fixture.debugElement
     spyOn(component, 'editContact');
     const counter = de.query(By.directive(ContactListComponent));
     const cmp = counter.componentInstance;
-    cmp.edit.emit(0);
-    expect(component.editContact).toHaveBeenCalledWith(0);
+    cmp.edit.emit(testContact.id);
+    expect(component.editContact).toHaveBeenCalledWith(testContact.id);
   });
   
   
