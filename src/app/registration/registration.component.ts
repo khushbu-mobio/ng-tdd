@@ -34,7 +34,7 @@ export class RegistrationComponent implements OnInit {
    */
   ngOnInit() {
     this.data = this.regService.getUsers();
-    console.log("reg =>", this.registerForm);
+    //console.log("reg =>", this.registerForm);
   }
 
   /**

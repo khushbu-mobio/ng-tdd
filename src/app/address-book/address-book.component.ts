@@ -24,6 +24,7 @@ export class AddressBookComponent implements OnInit {
     } else if (event.mode === "edit") {
       this.addressService.updateContactById(event.contact.id, event.contact);
     }
+    console.log("called")
   }
 
   /**
@@ -37,7 +38,9 @@ export class AddressBookComponent implements OnInit {
    * Call DeleteContactById() from  addressService and delete contact
    */
   deleteContact(id) {
+    console.log("Call del")
     this.addressService.deleteContactById(id);
+
   }
 
   /**
