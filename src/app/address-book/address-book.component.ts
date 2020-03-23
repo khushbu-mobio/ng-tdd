@@ -10,7 +10,7 @@ import { AddressBookDataService } from '../services/address-book-data.service';
 export class AddressBookComponent implements OnInit {
   
   contact:Contact = new Contact();
-  constructor(private addressService: AddressBookDataService) { }
+  constructor(public addressService: AddressBookDataService) { }
 
   ngOnInit() {
   }
@@ -18,7 +18,7 @@ export class AddressBookComponent implements OnInit {
   /**
    * call the addressService and save the contact
    */
-  saveContact(event) {
+  saveContact(event = null) {
     if(event.mode === "new") {
       this.addressService.addContact(event.contact);
     } else if (event.mode === "edit") {
