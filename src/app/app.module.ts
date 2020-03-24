@@ -20,7 +20,6 @@ import { AddressBookDataService } from './services/address-book-data.service';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
   { path: 'users', component: UsersComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'address-book', component: AddressBookComponent },
